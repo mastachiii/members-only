@@ -1,4 +1,3 @@
-// Modules
 const express = require("express");
 
 // Routes
