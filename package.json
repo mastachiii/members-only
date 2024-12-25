@@ -1,8 +1,13 @@
 {
-  "devDependencies": {
-    "dotenv": "^16.4.7"
-  },
-  "dependencies": {
-    "nodemon": "^3.1.9"
-  }
+    "devDependencies": {
+        "dotenv": "^16.4.7"
+    },
+    "dependencies": {
+        "ejs": "^3.1.10",
+        "express": "^4.21.2",
+        "nodemon": "^3.1.9"
+    },
+    "scripts": {
+        "dev": "nodemon app.js"
+    }
 }
