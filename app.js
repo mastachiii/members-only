@@ -16,5 +16,10 @@ app.get("/", (req, res) => {
 
 app.use("/sign-up", signUp);
 
+app.use((err, req, res, next) => {
+    console.error(err);
+    res.status(500).json({ error: err });
+});
+
 const PORT = process.env.port || 8080;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

@@ -1,4 +1,5 @@
 const express = require("express");
+const db = require("../db/query");
 const { body, header, validationResult } = require("express-validator");
 
 // Form Validation
@@ -24,16 +25,23 @@ function getSignUpForm(req, res) {
     res.render("signUpForm");
 }
 
-const addNewUser = [
+const addUser = [
     validateForm,
-    (req, res) => {
-        const errors = validationResult(req);
+    async (req, res, next) => {
+        try {
+            const errors = validationResult(req);
+            if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
 
-        if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
+            await db.addUser(req.body);
+
+            res.redirect("/");
+        } catch (err) {
+            next(err);
+        }
     },
 ];
 
 module.exports = {
     getSignUpForm,
-    addNewUser,
+    addUser,
 };

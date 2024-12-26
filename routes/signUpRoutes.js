@@ -8,6 +8,6 @@ const router = express.Router();
 router.get("/", controller.getSignUpForm);
 
 // POST
-router.post("/", controller.addNewUser);
+router.post("/", controller.addUser);
 
 module.exports = router;
