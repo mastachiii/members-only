@@ -1,15 +1,18 @@
 const express = require("express");
 const session = require("express-session");
-const passport = require("passport");
-const LocalStrategy = require("passport-local").Strategy;
 const PgStore = require("connect-pg-simple")(session);
 const pool = require("./db/pool");
+const passport = require("passport");
+const passportConfig = require("./controllers/passport");
 require("dotenv").config();
 
 // Routes
 const signUp = require("./routes/signUpRoutes");
+const logIn = require("./routes/logInRoutes");
 
 const app = express();
+
+app.set("view engine", "ejs");
 
 // Session stuff
 const sessionStore = new PgStore({
@@ -30,8 +33,7 @@ app.use(
     })
 );
 
-
-app.set("view engine", "ejs");
+app.use(passport.authenticate("session"));
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
@@ -41,6 +43,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/sign-up", signUp);
+app.use("/log-in", logIn);
 
 app.use((err, req, res, next) => {
     console.error(err);
