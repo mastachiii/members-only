@@ -8,7 +8,7 @@ require("dotenv").config();
 
 // Routes
 const signUp = require("./routes/signUpRoutes");
-const logIn = require("./routes/logInRoutes");
+const logIn = require("./routes/logRoutes");
 
 const app = express();
 
@@ -43,7 +43,7 @@ app.get("/", (req, res) => {
 });
 
 app.use("/sign-up", signUp);
-app.use("/log-in", logIn);
+app.use("/", logIn);
 
 app.use((err, req, res, next) => {
     console.error(err);
