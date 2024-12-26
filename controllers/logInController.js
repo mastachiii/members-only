@@ -2,15 +2,23 @@ const express = require("express");
 const db = require("../db/query");
 
 function getLogInForm(req, res) {
-    res.render("logInForm");
+    let error;
+
+    if (req.session.messages) {
+        error = req.session.messages[0];
+        req.session.messages = []; // Clear out messages so it wont stack
+    }
+
+    if (req.user) res.redirect("/logged-in");
+
+    res.render("logInForm", { error });
 }
 
 function getLogInIndex(req, res) {
-    res.render("indexAuthenticated", { user: req.user.username });
+    res.render("indexAuthenticated", { username: req.user.username });
 }
 
 function logInUser(req, res) {
-    console.log(req);
     res.redirect("/logged-in");
 }
 

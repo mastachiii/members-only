@@ -6,11 +6,14 @@
         <title>Document</title>
     </head>
     <body>
+        <% if (locals.error) { %>
+        <p><%= error %></p>
+        <% } %>
         <form action="" method="post">
             <label for="username">Username: </label>
             <input type="text" name="username" id="username" />
             <label for="password">Password: </label>
-            <input type="text" name="password" id="password" />
+            <input type="password" name="password" id="password" />
             <button>Submit</button>
         </form>
     </body>
