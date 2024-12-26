@@ -3,7 +3,7 @@ const { body, header, validationResult } = require("express-validator");
 
 // Form Validation
 const emailMessage = "The email you entered seems to be invalid. Please double check it's format";
-const passwordMessage = "The password you entered seems to be invalid. Make sure it has atleast 10 characters and has both numbers & letters";
+const passwordMessage = "The password you entered seems to be invalid. Make sure it has atleast 10 characters";
 
 const validateForm = [
     body("fullname").trim().notEmpty().withMessage("Full Name is required."),
@@ -29,7 +29,7 @@ const addNewUser = [
     (req, res) => {
         const errors = validationResult(req);
 
-        console.log(errors);
+        if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
     },
 ];
 
