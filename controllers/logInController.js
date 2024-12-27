@@ -1,4 +1,3 @@
-const express = require("express");
 const db = require("../db/query");
 
 function getLogInForm(req, res) {
@@ -9,17 +8,13 @@ function getLogInForm(req, res) {
         req.session.messages = []; // Clear out messages so it wont stack
     }
 
-    if (req.user) res.redirect("/logged-in");
+    if (req.user) res.redirect("/");
 
     res.render("logInForm", { error });
 }
 
-function getLogInIndex(req, res) {
-    res.render("indexAuthenticated", { username: req.user.username });
-}
-
 function logInUser(req, res) {
-    res.redirect("/logged-in");
+    res.redirect("/");
 }
 
 function logOutUser(req, res, next) {
@@ -34,5 +29,4 @@ module.exports = {
     getLogInForm,
     logInUser,
     logOutUser,
-    getLogInIndex,
 };

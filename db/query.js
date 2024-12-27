@@ -21,8 +21,13 @@ async function getUserById(id) {
     return rows[0];
 }
 
+async function updateMembership(id) {
+    await db.query("UPDATE users SET is_member = TRUE WHERE id = $1", [id]);
+}
+
 module.exports = {
     addUser,
     getUserByUsername,
     getUserById,
+    updateMembership,
 };

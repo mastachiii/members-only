@@ -8,8 +8,6 @@ const router = express.Router();
 // GET
 router.get("/log-in", controller.getLogInForm);
 
-router.get("/logged-in", autheticate.isAuth, controller.getLogInIndex);
-
 // POST
 router.post(
     "/log-in",

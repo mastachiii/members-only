@@ -7,5 +7,11 @@
     </head>
     <body>
         <h1>MEMBERSHIP</h1>
+        <% if (locals.message){ %> <%= message %> <%}%>
+        <form action="" method="post">
+            <h1>What is always coming but never arrives?</h1>
+            <input type="text" name="passcode" id="passcode" />
+            <button>Submit</button>
+        </form>
     </body>
 </html>
