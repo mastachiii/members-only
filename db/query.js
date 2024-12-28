@@ -25,6 +25,12 @@ async function updateMembership(id) {
     await db.query("UPDATE users SET is_member = TRUE WHERE id = $1", [id]);
 }
 
+async function getAllMessages() {
+    const { rows } = await db.query("SELECT * FROM messages ORDER BY id DESC");
+
+    return rows;
+}
+
 async function addMessage({ date, username, title, message }) {
     await db.query("INSERT INTO messages (date, username, title, message) VALUES ($1, $2, $3, $4)", [date, username, title, message]);
 }
@@ -35,4 +41,5 @@ module.exports = {
     getUserById,
     updateMembership,
     addMessage,
+    getAllMessages,
 };

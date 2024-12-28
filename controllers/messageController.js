@@ -12,9 +12,17 @@ const validateForm = [
 
 const addMessage = [
     validateForm,
-    (req, res, next) => {
+    async (req, res, next) => {
         const errors = validationResult(req);
+
         if (!errors.isEmpty()) res.json({ errors: errors.array() });
+
+        const { title, message } = req.body;
+        const username = req.user.username;
+        const date = new Date().toUTCString();
+
+        await db.addMessage({ title, message, username, date });
+        res.redirect("/");
     },
 ];
 

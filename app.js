@@ -1,4 +1,5 @@
 const express = require("express");
+const db = require("./db/query");
 const session = require("express-session");
 const PgStore = require("connect-pg-simple")(session);
 const pool = require("./db/pool");
@@ -11,7 +12,7 @@ require("dotenv").config();
 const signUp = require("./routes/signUpRoutes");
 const logIn = require("./routes/logRoutes");
 const membership = require("./routes/membershipRoutes");
-const message = require('./routes/messageRoutes')
+const message = require("./routes/messageRoutes");
 
 const app = express();
 
@@ -41,14 +42,16 @@ app.use(passport.authenticate("session"));
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", authenticate.isAuth, (req, res) => {
-    res.render("indexAuthenticated", { username: req.user.username, isMember: req.user.is_member });
+app.get("/", authenticate.isAuth, async (req, res) => {
+    const messages = await db.getAllMessages();
+
+    res.render("indexAuthenticated", { username: req.user.username, isMember: req.user.is_member, messages });
 });
 
 app.use("/", logIn);
 app.use("/sign-up", signUp);
 app.use("/secret", membership);
-app.use("/message", message)
+app.use("/message", message);
 
 app.use((err, req, res, next) => {
     console.error(err);

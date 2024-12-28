@@ -12,7 +12,12 @@
         <button id="message-btn">Create a new message</button>
         <% } else { %>
         <a href="/secret">secret</a>
-        <% } %>
+        <% } %> <% messages.forEach(message => { %>
+        <p><%= message.username %></p>
+        <p>at <%= message.date %></p>
+        <h3><%= message.title %></h3>
+        <p><%= message.message %></p>
+        <% }) %>
         <form action="/log-out" method="post">
             <button>Log out</button>
         </form>
