@@ -41,7 +41,7 @@ app.use(passport.authenticate("session"));
 app.use(express.urlencoded({ extended: true }));
 
 app.get("/", authenticate.isAuth, (req, res) => {
-    res.render("indexAuthenticated", { username: req.user.username });
+    res.render("indexAuthenticated", { username: req.user.username, isMember: req.user.is_member });
 });
 
 app.use("/sign-up", signUp);

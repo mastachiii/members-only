@@ -6,9 +6,21 @@
         <title>Document</title>
     </head>
     <body>
+        <% console.log(locals) %>
         <h1>You are logged in, <%= username %></h1>
+        <% if (isMember) {%>
+        <button id="message-btn">Create a new message</button>
+        <% } else { %>
+        <a href="/secret">secret</a>
+        <% } %>
         <form action="/log-out" method="post">
             <button>Log out</button>
         </form>
     </body>
+    <%- include('addMessage') %>
 </html>
+<script>
+    const messageBtn = document.querySelector("#message-btn");
+    const messageForm = document.querySelector("dialog");
+    messageBtn.addEventListener("click", () => messageForm.showModal());
+</script>
