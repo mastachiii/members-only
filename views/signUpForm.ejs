@@ -5,6 +5,14 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Document</title>
     </head>
+    <% if (locals.errors) { %>
+    <ul>
+        <% errors.forEach(err => { %>
+        <li><%= err.msg %></li>
+        <%}) %>
+    </ul>
+    <% } %>
+
     <body>
         <form action="" method="post">
             <label for="fullname">Full Name:</label>

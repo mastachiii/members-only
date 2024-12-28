@@ -1,7 +1,7 @@
 const express = require("express");
 const db = require("../db/query");
 const bcrypt = require("bcryptjs");
-const { body, header, validationResult } = require("express-validator");
+const { body, validationResult } = require("express-validator");
 
 // Form Validation
 const emailMessage = "The email you entered seems to be invalid. Please double check it's format";
@@ -16,7 +16,6 @@ const validateForm = [
         .trim()
         .notEmpty()
         .custom((value, { req }) => {
-            console.log(value, req.body.password);
             return value == req.body.password;
         })
         .withMessage("The password does not match."),
@@ -30,7 +29,7 @@ const addUser = [
     validateForm,
     (req, res, next) => {
         const errors = validationResult(req);
-        if (!errors.isEmpty()) return res.status(400).json({ errors: errors.array() });
+        if (!errors.isEmpty()) return res.status(401).render("signUpForm", { errors: errors.array() });
 
         bcrypt.hash(req.body.password, 10, async (err, hasedPassword) => {
             if (err) next(err);
