@@ -42,7 +42,13 @@ app.use(passport.authenticate("session"));
 // Middleware
 app.use(express.urlencoded({ extended: true }));
 
-app.get("/", authenticate.isAuth, async (req, res) => {
+app.get("/", async (req, res) => {
+    const messages = await db.getAllMessages();
+
+    res.render("indexUnauthenticated", { messages });
+});
+
+app.get("/homepage", authenticate.isAuth, async (req, res) => {
     const messages = await db.getAllMessages();
 
     res.render("indexAuthenticated", { username: req.user.username, isMember: req.user.is_member, messages });
