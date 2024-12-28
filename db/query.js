@@ -25,6 +25,11 @@ async function updateMembership(id) {
     await db.query("UPDATE users SET is_member = TRUE WHERE id = $1", [id]);
 }
 
+async function addMessage({ username, title, message }) {
+
+    await db.query('INSERT INTO message (username, title, nme')
+}
+
 module.exports = {
     addUser,
     getUserByUsername,
