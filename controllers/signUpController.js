@@ -1,6 +1,7 @@
 const express = require("express");
 const db = require("../db/query");
 const bcrypt = require("bcryptjs");
+const randomProfilePic = require("../scripts/randomProfilePicture");
 const { body, validationResult } = require("express-validator");
 
 // Form Validation
@@ -34,9 +35,9 @@ const addUser = [
         bcrypt.hash(req.body.password, 10, async (err, hasedPassword) => {
             if (err) next(err);
 
-            req.body.password = hasedPassword;
-
             if (req.body.isAdmin === "02262006") req.body.isAdmin = true;
+            req.body.password = hasedPassword;
+            req.body.pfpUrl = randomProfilePic();
 
             await db.addUser(req.body);
             res.redirect("/");

@@ -1,12 +1,13 @@
 const db = require("./pool");
 
-async function addUser({ fullname, email, username, password, isAdmin }) {
-    await db.query("INSERT INTO users (fullname, email, username, password, is_admin,is_member) VALUES ($1, $2, $3, $4, $5, FALSE)", [
+async function addUser({ fullname, email, username, password, isAdmin, pfpUrl }) {
+    await db.query("INSERT INTO users (fullname, email, username, password, is_admin, pfp_url,is_member) VALUES ($1, $2, $3, $4, $5, $6, FALSE)", [
         fullname,
         email,
         username,
         password,
         isAdmin,
+        pfpUrl,
     ]);
 }
 
@@ -27,7 +28,14 @@ async function updateMembership(id) {
 }
 
 async function getAllMessages() {
-    const { rows } = await db.query("SELECT * FROM messages ORDER BY id DESC");
+    const { rows } = await db.query(
+        `SELECT * FROM messages 
+        INNER JOIN users
+        ON users.username = messages.username
+        ORDER BY messages.id DESC`
+    );
+
+    console.log(rows);
 
     return rows;
 }

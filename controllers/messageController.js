@@ -19,6 +19,7 @@ const addMessage = [
 
         const { title, message } = req.body;
         const username = req.user.username;
+        const pfpUrl = req.user.pfp_url;
         const date = new Date().toUTCString();
 
         await db.addMessage({ title, message, username, date });

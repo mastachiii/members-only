@@ -41,6 +41,7 @@ app.use(passport.authenticate("session"));
 
 // Middleware
 app.use(express.urlencoded({ extended: true }));
+app.use(express.static(__dirname + '/public'))
 
 app.get("/", async (req, res) => {
     const messages = await db.getAllMessages();
@@ -62,7 +63,6 @@ app.use("/secret", membership);
 app.use("/message", message);
 
 app.use((err, req, res, next) => {
-    console.error(err);
     res.status(500).json({ error: err });
 });
 

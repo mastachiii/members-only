@@ -15,6 +15,7 @@
         <% } %>
         <!---->
         <% messages.forEach(message => { %>
+        <img src="<%= message.pfp_url %>" alt="profile picture url" />
         <p><%= message.username %></p>
         <p>at <%= message.date %></p>
         <h3><%= message.title %></h3>
