@@ -26,6 +26,17 @@ const addMessage = [
     },
 ];
 
+async function deleteMessage(req, res, next) {
+    try {
+        await db.deleteMessage(req.params.id);
+
+        res.redirect("/homepage");
+    } catch (err) {
+        next(err);
+    }
+}
+
 module.exports = {
     addMessage,
+    deleteMessage,
 };

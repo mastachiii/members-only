@@ -36,6 +36,10 @@ async function addMessage({ date, username, title, message }) {
     await db.query("INSERT INTO messages (date, username, title, message) VALUES ($1, $2, $3, $4)", [date, username, title, message]);
 }
 
+function deleteMessage(id) {
+    db.query("DELETE FROM messages WHERE id = $1", [id]);
+}
+
 module.exports = {
     addUser,
     getUserByUsername,
@@ -43,4 +47,5 @@ module.exports = {
     updateMembership,
     addMessage,
     getAllMessages,
+    deleteMessage,
 };

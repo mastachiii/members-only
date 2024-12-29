@@ -8,4 +8,6 @@ router.use(authenticate.isAuth);
 
 router.post("/", controller.addMessage);
 
+router.post("/delete/:id", controller.deleteMessage);
+
 module.exports = router;

@@ -12,12 +12,18 @@
         <button id="message-btn">Create a new message</button>
         <% } else { %>
         <a href="/secret">secret</a>
-        <% } %> <% messages.forEach(message => { %>
+        <% } %>
+        <!---->
+        <% messages.forEach(message => { %>
         <p><%= message.username %></p>
         <p>at <%= message.date %></p>
         <h3><%= message.title %></h3>
         <p><%= message.message %></p>
-        <% }) %>
+        <% if (isAdmin){ %>
+        <form action="/message/delete/<%= message.id %>" method="post">
+            <button>delete message</button>
+        </form>
+        <% } %> <% }) %>
         <form action="/log-out" method="post">
             <button>Log out</button>
         </form>

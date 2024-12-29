@@ -32,7 +32,7 @@ app.use(
         saveUninitialized: true,
         store: sessionStore,
         cookie: {
-            maxAge: 3600000, // Set cookies to 2 minutes for debugging purposes, will set to one day once ready for prod.
+            maxAge: 3600000,
         },
     })
 );
@@ -45,13 +45,15 @@ app.use(express.urlencoded({ extended: true }));
 app.get("/", async (req, res) => {
     const messages = await db.getAllMessages();
 
+    if (req.user) res.redirect("/homepage");
+
     res.render("indexUnauthenticated", { messages });
 });
 
 app.get("/homepage", authenticate.isAuth, async (req, res) => {
     const messages = await db.getAllMessages();
 
-    res.render("indexAuthenticated", { username: req.user.username, isMember: req.user.is_member, messages });
+    res.render("indexAuthenticated", { username: req.user.username, isMember: req.user.is_member, isAdmin: req.user.is_admin, messages });
 });
 
 app.use("/", logIn);

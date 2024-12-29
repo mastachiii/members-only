@@ -38,8 +38,6 @@ const addUser = [
 
             if (req.body.isAdmin === "02262006") req.body.isAdmin = true;
 
-            console.log(req.body);
-
             await db.addUser(req.body);
             res.redirect("/");
         });
