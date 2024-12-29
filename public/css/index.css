@@ -6,4 +6,10 @@
     --text-color: #f8fafc;
     --text-header-color: #cbd5e1;
     --text-font: "Open Sans";
+    --text-active: #9ca3af;
+    --button-radius: 8px;
+}
+
+a {
+    text-decoration: none;
 }

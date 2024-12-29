@@ -2,8 +2,10 @@
 <html lang="en">
     <%- include('partials/head.ejs', {title: 'Members Only', css: 'indexUnauthenticated.css'}) %>
     <body>
-        <a href="/log-in">Log in</a>
-        <a href="/sign-up">Sign Up</a>
+        <div>
+            <a href="/sign-up" class="signup-btn">Sign Up</a>
+            <a href="/log-in" class="login-btn">Log in</a>
+        </div>
         <div class="messages-container">
             <% messages.forEach(message => { %>
             <div class="message-card">
