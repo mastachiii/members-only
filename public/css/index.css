@@ -7,7 +7,13 @@
     --text-header-color: #cbd5e1;
     --text-font: "Open Sans";
     --text-active: #9ca3af;
+    --text-error: #dc2626;
     --button-radius: 8px;
+    --box-shadow: 2px 10px 18px -3px rgba(0, 0, 0, 0.29);
+}
+
+html {
+    background-color: var(--background-color);
 }
 
 a {

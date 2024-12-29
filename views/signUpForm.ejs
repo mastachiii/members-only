@@ -1,34 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-    </head>
-    <% if (locals.errors) { %>
-    <ul>
-        <% errors.forEach(err => { %>
-        <li><%= err.msg %></li>
-        <%}) %>
-    </ul>
-    <% } %>
+    <%- include('partials/head.ejs', {title: 'Members Only | Sign Up', css: 'signUp.css'}) %>
 
     <body>
         <form action="" method="post">
-            <label for="fullname">Full Name:</label>
+            <h2>Create an account</h2>
+            <% if (locals.errors) { %>
+            <ul>
+                <% errors.forEach(err => { %>
+                <li>- <%= err.msg %></li>
+                <%}) %>
+            </ul>
+            <% } %>
+            <label for="fullname">Full Name <span>*</span></label>
             <input type="text" name="fullname" id="fullname" maxlength="255" required />
-            <label for="email">Email</label>
+            <label for="email">Email <span>*</span></label>
             <input type="email" name="email" id="email" />
-            <label for="username">Username:</label>
+            <label for="username">Username <span>*</span></label>
             <input type="text" name="username" id="username" maxlength="255" required />
-            <label for="password">Password:</label>
+            <label for="password">Password <span>*</span></label>
             <input type="password" name="password" id="password" required />
-            <label for="passwordConfirm">Confirm Password:</label>
+            <label for="passwordConfirm">Confirm Password</label>
             <input type="password" name="passwordConfirm" id="passwordConfirm" required />
-            <label for="isAdmin">Admin Passcode: </label>
+            <label for="isAdmin">Admin Passcode</label>
             <input type="text" name="isAdmin" id="isAdmin" />
             <button>Submit</button>
+            <a href="/log-in">Already have an account?</a>
         </form>
-        <a href="/log-in">LOG IN</a>
     </body>
 </html>

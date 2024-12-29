@@ -35,8 +35,8 @@ const addUser = [
         bcrypt.hash(req.body.password, 10, async (err, hasedPassword) => {
             if (err) next(err);
 
-            if (req.body.isAdmin === "02262006") req.body.isAdmin = true;
             req.body.password = hasedPassword;
+            req.body.isAdmin = req.body.isAdmin === '02262006'
             req.body.pfpUrl = randomProfilePic();
 
             await db.addUser(req.body);
