@@ -10,11 +10,27 @@
     color: var(--text-active);
 }
 
-.secret-container {
+.secret-container,
+.message-btn-container {
     width: 100%;
     display: flex;
     justify-content: center;
     margin: 2rem auto 0 auto;
+}
+
+.message-btn {
+    margin: 0 auto;
+    padding: 1rem;
+    border: dashed 2px var(--text-color);
+    font-size: 1rem;
+    color: var(--text-color);
+    background: none;
+    cursor: pointer;
+}
+
+.message-btn:hover {
+    text-decoration: underline;
+    border-style: solid;
 }
 
 .secret-btn {

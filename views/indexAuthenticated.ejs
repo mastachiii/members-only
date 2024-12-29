@@ -6,7 +6,7 @@
             <form action="/log-out" method="post"><button class="logout-btn">Log out</button></form>
         </div>
         <% if (isMember) {%>
-        <button id="message-btn">Create a new message</button>
+        <div class="message-btn-container"><button class="message-btn">Create a new message</button></div>
         <% } else { %>
         <div class="secret-container">
             <a href="/secret" class="secret-btn"><img src="/icons/key.svg" alt="key" /></a>
@@ -36,7 +36,7 @@
     <%- include('addMessage') %>
 </html>
 <script>
-    const messageBtn = document.querySelector("#message-btn");
+    const messageBtn = document.querySelector(".message-btn");
     const messageForm = document.querySelector("dialog");
     messageBtn.addEventListener("click", () => messageForm.showModal());
 </script>
