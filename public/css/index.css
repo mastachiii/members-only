@@ -1,8 +1,9 @@
 @import url("https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap");
 
 :root {
-    --background-color: #3f3f46k;
-    --secondary-color: #27272a;
+    --background-color: #27272a;
+    --secondary-color: #3f3f46;
     --text-color: #f8fafc;
+    --text-header-color: #cbd5e1;
     --text-font: "Open Sans";
 }

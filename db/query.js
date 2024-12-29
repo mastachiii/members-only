@@ -35,8 +35,6 @@ async function getAllMessages() {
         ORDER BY messages.id DESC`
     );
 
-    console.log(rows);
-
     return rows;
 }
 

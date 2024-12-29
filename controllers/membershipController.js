@@ -7,8 +7,6 @@ function getMembershipForm(req, res) {
 function updateMembership(req, res) {
     const { id } = req.user;
     const passcode = req.body.passcode.toLowerCase();
-    console.log(req.body);
-    console.log(req.user);
 
     if (passcode === "tomorrow") {
         db.updateMembership(id);

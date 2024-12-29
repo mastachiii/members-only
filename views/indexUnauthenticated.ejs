@@ -1,19 +1,23 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-    </head>
+    <%- include('partials/head.ejs', {title: 'Members Only', css: 'indexUnauthenticated.css'}) %>
     <body>
         <a href="/log-in">Log in</a>
         <a href="/sign-up">Sign Up</a>
-        <% messages.forEach(message => { %>
-        <img src="<%= message.pfp_url %>" alt="profile picture" />
-        <p>*****</p>
-        <p>at <%= message.date %></p>
-        <h3><%= message.title %></h3>
-        <p><%= message.message %></p>
-        <% }) %>
+        <div class="messages-container">
+            <% messages.forEach(message => { %>
+            <div class="message-card">
+                <div>
+                    <img src="<%= message.pfp_url %>" alt="profile picture" />
+                    <span>
+                        <p>*****</p>
+                        <p>at <%= message.date %></p>
+                    </span>
+                </div>
+                <h3><%= message.title %></h3>
+                <p><%= message.message %></p>
+            </div>
+            <% }) %>
+        </div>
     </body>
 </html>
