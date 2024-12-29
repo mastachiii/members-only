@@ -1,21 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-    </head>
+    <%- include('partials/head.ejs', {title: 'Members Only | Log In', css: 'logIn.css'}) %>
     <body>
-        <% if (locals.error) { %>
-        <p><%= error %></p>
-        <% } %>
         <form action="" method="post">
+            <h2>Welcome back!</h2>
+            <% if (locals.error) { %>
+            <p><%= error %></p>
+            <% } %>
             <label for="username">Username: </label>
             <input type="text" name="username" id="username" />
             <label for="password">Password: </label>
             <input type="password" name="password" id="password" />
-            <button>Submit</button>
+            <button>Log in</button>
+            <a href="/sign-up">Don't have an account?</a>
         </form>
-        <a href="/sign-up">SIGN UP</a>
     </body>
 </html>

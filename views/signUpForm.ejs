@@ -1,14 +1,13 @@
 <!DOCTYPE html>
 <html lang="en">
-    <%- include('partials/head.ejs', {title: 'Members Only | Sign Up', css: 'signUp.css'}) %>
-
+    <%- include('partials/head.ejs', {title: 'Members Only | Sign Up', css: ''}) %>
     <body>
         <form action="" method="post">
             <h2>Create an account</h2>
             <% if (locals.errors) { %>
             <ul>
                 <% errors.forEach(err => { %>
-                <li>- <%= err.msg %></li>
+                <li><%= err.msg %></li>
                 <%}) %>
             </ul>
             <% } %>
@@ -24,7 +23,7 @@
             <input type="password" name="passwordConfirm" id="passwordConfirm" required />
             <label for="isAdmin">Admin Passcode</label>
             <input type="text" name="isAdmin" id="isAdmin" />
-            <button>Submit</button>
+            <button>Sign up</button>
             <a href="/log-in">Already have an account?</a>
         </form>
     </body>

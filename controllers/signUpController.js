@@ -1,4 +1,3 @@
-const express = require("express");
 const db = require("../db/query");
 const bcrypt = require("bcryptjs");
 const randomProfilePic = require("../scripts/randomProfilePicture");
@@ -40,7 +39,7 @@ const addUser = [
             req.body.pfpUrl = randomProfilePic();
 
             await db.addUser(req.body);
-            res.redirect("/");
+            res.redirect("/log-in");
         });
     },
 ];
