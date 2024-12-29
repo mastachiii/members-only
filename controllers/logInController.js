@@ -21,7 +21,7 @@ function logOutUser(req, res, next) {
     req.logout(err => {
         if (err) next(err);
 
-        res.redirect("/log-out");
+        res.redirect("/log-in");
     });
 }
 
