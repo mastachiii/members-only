@@ -2,7 +2,7 @@
 <html lang="en">
     <%- include('partials/head.ejs', {title: 'Members Only | Log In', css: 'logIn.css'}) %>
     <body>
-        <form action="" method="post">
+        <form action="" method="post" class="login-form">
             <h2>Welcome back!</h2>
             <% if (locals.error) { %>
             <p><%= error %></p>

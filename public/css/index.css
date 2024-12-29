@@ -14,27 +14,33 @@
 
 html {
     background-color: var(--background-color);
+    font-family: var(--text-font);
+    color: var(--text-color);
 }
 
 a {
     text-decoration: none;
 }
 
-form {
+button {
+    border: none;
+}
+
+.signup-form,
+.login-form,
+.membership-form {
     width: 25%;
     display: flex;
     flex-direction: column;
     padding: 2rem 2rem 4rem 2rem;
     margin: 0 auto;
     transform: translateY(10vh);
-    font-family: var(--text-font);
     background-color: var(--secondary-color);
     box-shadow: var(--box-shadow);
 
     li,
     p {
         font-size: 10px;
-        color: var(--text-error);
         text-align: center;
     }
 
@@ -51,13 +57,11 @@ form {
         margin: 0 0 2rem 0;
         align-self: center;
         font-size: 1.4rem;
-        color: var(--text-color);
     }
 
     label {
         margin-bottom: 6px;
         font-size: 14px;
-        color: var(--text-color);
     }
 
     input {
@@ -76,7 +80,6 @@ form {
     button {
         padding: 8px;
         border: none;
-        font-family: var(--text-font);
         font-size: 16px;
         font-weight: 600;
         color: var(--text-color);
@@ -96,5 +99,96 @@ form {
 
     a:hover {
         text-decoration: underline;
+    }
+}
+
+.btn-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
+.signup-btn,
+.login-btn,
+.logout-btn {
+    width: 3%;
+    padding: 6px;
+    margin-top: 5px;
+    border-radius: var(--button-radius);
+    font-family: var(--text-font);
+    font-size: 13px;
+    font-weight: 600;
+    text-align: center;
+    background-color: transparent;
+    color: var(--text-color);
+}
+
+.logout-btn {
+    width: 100%;
+    padding: 8px;
+}
+
+.signup-btn {
+    margin: 5px 10px 0 auto;
+    background-color: #15803d;
+}
+
+.login-btn,
+.logout-btn {
+    border: solid 2px var(--secondary-color);
+}
+
+.signup-btn:hover,
+.login-btn:hover,
+.logout-btn:hover {
+    color: var(--text-active);
+}
+
+.messages-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+    margin-top: 4rem;
+}
+
+.message-card {
+    width: 40%;
+    padding: 1rem;
+    border-radius: 12px;
+    font-family: var(--text-font);
+    color: var(--text-color);
+    background-color: var(--secondary-color);
+    box-shadow: var(--box-shadow);
+
+    > div {
+        display: flex;
+
+        img {
+            width: 64px;
+            height: 64px;
+        }
+
+        p {
+            margin: 0 0 0 8px;
+        }
+
+        p:first-of-type {
+            margin-top: 5px;
+        }
+
+        p:nth-of-type(2) {
+            font-size: 11px;
+        }
+    }
+
+    > h3 {
+        font-style: italic;
+        font-size: 1.5rem;
+        color: var(--text-header-color);
+    }
+
+    > p {
+        font-size: 1rem;
     }
 }

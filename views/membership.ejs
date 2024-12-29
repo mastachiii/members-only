@@ -1,17 +1,18 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <title>Document</title>
-    </head>
+    <%- include('partials/head.ejs', {title: 'Members Only | Secret', css: 'secret.css'}) %>
     <body>
-        <h1>MEMBERSHIP</h1>
-        <% if (locals.message){ %> <%= message %> <%}%>
-        <form action="" method="post">
-            <h1>What is always coming but never arrives?</h1>
+        <div class="btn-container">
+            <form action="/log-out" method="post"><button class="logout-btn">Log out</button></form>
+        </div>
+        <form action="" method="post" class="membership-form">
+            <h2>What is always coming but never arrives?</h2>
+            <% if (locals.message){ %>
+            <p><%= message %></p>
+            <%}%>
             <input type="text" name="passcode" id="passcode" />
             <button>Submit</button>
+            <a href="/">Back to homepage</a>
         </form>
     </body>
 </html>
